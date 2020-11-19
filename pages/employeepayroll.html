@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/EmployeePayroll.css">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Employee Payroll form</title>
-    <script defer src="../js/EmployeePayrollScript.js"></script>
+    <script defer src = "../js/EmployeePayrollScript.js"></script>
 </head>
-
 <body>
-    <!--- UC 1 -->
     <header class="header-content header">
         <div class="logo-content">
-            <img src="../assets/images/logo.png" alt="" alt style="width: 7%">
-            <div>
-                <span class="emp-text">EMPLOYEE</span><br>
-                <span class="emp-text emp-payroll">PAYROLL</span>
-            </div>
+            <img src="../assets/images/logo.png" alt="program">
+        <div>
+        <span class="employee">EMPLOYEE</span><br>
+        <span class="employee payroll">PAYROLL</span>
         </div>
-
-    </header>
+        </div>
+    </header> 
     <div class="form-content">
-        <form class="form" action="#" onsubmit="save();return false">
-            <div class="form-head">Employee Payroll form</div>
-            <div class="row-content">
-                <label class="label text" for="name">Name</label>
-                <input class="input" type="text" id="name" name="name" placeholder="Your name.." required>
-            </div>
-        </form>
-    </div>
+        <form class="form-head" action="#" onsubmit="save(event);return false">
+        <div class="form-head">Employee Payroll form</div>
+        <div class="row-content">
+            <label class="label text" for="name">Name</label>
+            <input class="input" type="text" id="name" name="name"
+                      placeholder="Your name.." required>
+        </div></form>
+    </div>   
 </body>
-
 </html>
