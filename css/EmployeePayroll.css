@@ -25,7 +25,7 @@ body{
 }
 .employee{
     font: normal normal bold 18px/24px Montserrat;
-    font-family: "Montserrat",sans-serif;
+    font-family: "Montserrat", sans-serif;
     letter-spacing: 0px;
     color: #82a70c;
     text-transform: capitalize;
@@ -77,7 +77,7 @@ label{
     display: inline-block;
 }
 .text{
-    font-size: 16px;
+    font-size: 12px;
     color: #42515f;
     opacity: 1;
     font-family: Roboto;
@@ -88,4 +88,29 @@ label{
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+}
+
+.profile-radio-content{
+    display: flex;
+    flex-direction: row;
+}
+.profile-radio-content > label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profile{
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 12px;
+}
+select{
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font: normal normal normal 12px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    background-color: transparent;
 }
