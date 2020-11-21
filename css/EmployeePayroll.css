@@ -1,50 +1,53 @@
-body{
+/* UC1 */
+body {
     margin: 0;
     height: 100%;
 }
-.header{
+.header {
     padding: 15px 0;
     background-color: #ffffff;
 }
-.header-content{
+.header-content {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border: 0px solid green;
 }
-.logo-content{
+.logo-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     border: 0px solid green;
     width: 80%;
 }
-.logo-content-img{
+.logo-content-img {
     border: solid 0px #42515f;
 }
-.employee{
-    font: normal normal bold 18px/24px Montserrat;
+.emp-text {
+    font: normal normal bold 20px/25px Montserrat;
     font-family: "Montserrat", sans-serif;
     letter-spacing: 0px;
     color: #82a70c;
     text-transform: capitalize;
 }
-.payroll{
+.emp-payroll {
     color: #42515f;
 }
-*{box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
 
-.form-content{
-    min-height: calc(100%-80px);
+/* UC 2 */
+.form-content {
+    min-height: calc(100% - 80px);
     background-color: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 0px solid green;
 }
-
-.form{
+.form {
     width: 65%;
     padding: 44px 60px;
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -53,8 +56,7 @@ body{
     border-radius: 8px;
     opacity: 1;
 }
-
-.form-head{
+.form-head {
     font: normal normal bold 24px/37px Roboto;
     letter-spacing: 0px;
     color: #42515f;
@@ -62,27 +64,27 @@ body{
     opacity: 1;
     padding-bottom: 20px;
 }
-.row-content{
+.row-content {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
     align-items: center;
-    border: 0px solid green;
+    border: opx solid green;
 }
-.label{
+.label {
     min-width: 140px;
 }
-label{
+label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-.text{
-    font-size: 12px;
+.text {
+    font-size: 16px;
     color: #42515f;
     opacity: 1;
     font-family: Roboto;
 }
-.input{
+.input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -90,39 +92,40 @@ label{
     resize: vertical;
 }
 
-.profile-radio-content{
+/* UC 3 */
+.profile-radio-content {
     display: flex;
     flex-direction: row;
 }
-.profile-radio-content > label{
+
+.profile-radio-content > label {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.profile{
+.profile {
     width: 40px;
     border-radius: 50%;
     margin-left: 12px;
 }
 select{
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 4px;
     resize: vertical;
-    font: normal normal normal 12px Roboto;
+    font: normal normal normal 16px Roboto;
     letter-spacing: 0px;
-    color: #42515f;
+    color: #e02525;
     background-color: transparent;
 }
-
-.button-content{
+.buttonParent{
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
     margin-top: 20px;
 }
 .button{
-    font-size: 16px;
+    font-size: 20px;
     font-family: Roboto;
     letter-spacing: 0px;
     color: #42515f;
@@ -137,25 +140,22 @@ select{
 }
 .submitButton{
     border: none;
-    background-color: #f5f5f5;
+    background: #f5f5f5;
     margin-right: 30px;
 }
 .cancelButton{
     text-decoration: none;
     text-align: center;
-    background-color: #f5f5f5;
 }
-
 @media only screen and (max-width: 960px){
     .cancelButton{
         margin-left: 0px;
     }
     .form{
-        width: 85%;
+        width:85%;
         padding: 44px 20px;
     }
 }
-
 @media only screen and (max-width: 600px){
     .form{
         margin-top: 10px;
@@ -180,8 +180,16 @@ select{
     .submitButton{
         margin: 0;
     }
-    .button-content{
+    .buttonParent{
         flex-direction: column-reverse;
         align-items: flex-start;
     }
+}
+#submitButton:hover, #resetButton:hover, #cancelButton:hover{
+    background-color: rgb(72, 194, 55);
+    color: white;
+}
+#submitButton:active, #resetButton:active, #cancelButton:active{
+    background-color: rgb(69, 55, 194);
+    color: rgb(0, 0, 0);
 }
