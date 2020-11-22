@@ -1,20 +1,29 @@
-const salary = document.querySelector('#salary')
-const output = document.querySelector('.salary-output')
-output.textContent = salary.value;
-salary.addEventListener('input', function () {
-    output.textContent = salary.value;
-});
-class EmployeePayrollData{
-    //properties
-    id;
-    name;
-    profilePic;
-    gender;
-    department;
-    salary;
-    startDate;
-    notes;
+window.addEventListener('DOMContentLoaded', (event) => {
+    const name = document.querySelector('#name');
+    const nameError = document.querySelector('.name-error');
+    name.addEventListener('input', function() {
+        if(name.value.length == 0) {
+            nameError.textContent = "";
+            return;
+        }
+        try {
+            (new EmployeePayrollData()).name = name.value;
+            nameError.textContent = "";
+        } catch (e) {
+            nameError.textContent = e;
+        }
+    }); 
 
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function () {
+        output.textContent = salary.value;
+    });
+}); 
+
+class EmployeePayrollData{
+    // getters and setters
     get id() {return this._id;}
     set id(id){
         this._id=id;
@@ -49,8 +58,7 @@ class EmployeePayrollData{
     get startDate() {return this._startDate;}
     set startDate(startDate){
         let newDate = new Date(startDate[2],startDate[1],startDate[0]);
-        let startDateCompare = dates.compare(newDate,new Date());
-        if(startDateCompare<=0) this._startDate = newDate;
+        if(newDate <= new Date()) this._startDate = newDate;
         else throw 'Start Date is incorrect';
     }
 
@@ -63,35 +71,45 @@ class EmployeePayrollData{
     toString(){
         return "id="+this.id+" : name="+this.name+
                 " : gender="+this.gender+" : Dept="+this.department+
-                " : salary="+this.salary+" : Start Date="+empDate
+                " : salary="+this.salary+" : Start Date="+this.startDate
                 +" : Notes="+this.notes;
     }
 }
 
-let employees=new Array();
-let employeeData = new EmployeePayrollData();
-
-function save(){
+const save = () => {
     try {
+        let employeePayroll = new EmployeePayrollData();
         employeePayroll.name = document.getElementById('name').value;
         employeePayroll.profilePic = getRadioValue(document.getElementsByName('profile'));
         employeePayroll.gender = getRadioValue(document.getElementsByName('gender'));
         employeePayroll.department = getCheckBoxValue(document.getElementsByClassName('checkbox'));
-        employeePayroll.salary = output.textContent;
+        employeePayroll.salary = document.getElementById('salary').value;
 
-        let start=new Array();
-        start.push(getElementById('day').value);
-        start.push(getElementById('month').value);
-        start.push(getElementById('year').value);
+        let start = new Array();
+        start.push(document.getElementById('day').value);
+        start.push(document.getElementById('month').value);
+        start.push(document.getElementById('year').value);
         employeePayroll.startDate = start;
 
-        employeePayroll.notes = document.getElementById('notes').value
+        employeePayroll.notes = document.getElementById('notes').value;
+        createAndUpdateStorage(employeePayroll);
         console.log(employeePayroll);
+        alert(employeePayroll);
     }
     catch (exception) {
-        console.error(exception)
+        console.error(exception); alert(exception);
     }
-    employees.push(employeePayroll)
+    employees.push(employeePayroll);
+}
+
+function createAndUpdateStorage(employeePayroll) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList != undefined)
+        employeePayrollList.push(employeePayroll);
+    else
+        employeePayrollList = [employeePayroll];
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
 
 function getRadioValue(radios) {
@@ -109,4 +127,27 @@ function getCheckBoxValue(boxes) {
         }
     }
     return boxlist;
+}
+
+const resetForm = () => {
+    setValue('#name', ' ');
+    unsetSelectedValue('[name=profile]');
+    unsetSelectedValue('[name=gender]');
+    unsetSelectedValue('[name=department]');
+    setValue('#salary', '');
+    setValue('#notes', '');
+    setValue('#day', '1');
+    setValue('#month', 'January');
+    setValue('#year', '2020');
+}
+
+const unsetSelectedValue = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => {
+        item.checked = false;
+    });
+}
+const setValue = (id, value) {
+    const element = document.querySelector(id);
+    element.value = value;
 }
